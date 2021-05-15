@@ -14,8 +14,11 @@ import java.util.stream.Stream;
  * Class which find the solution for the task second min
  * Build the heap(tournament tree) for n - 1 operation
  * Because all inner vertex match to one comparison and inner vertex = n - 1 (*)
+ * For find the second min we should go down the tree:
  * We know that the number of vertex decreases by half at each iteration,
  * so we need (log2(n) round up - 1) comparisons
+ * Sum = n - 1 + log2(n) round up - 1 = n - 2 + log2(n) round up
+ * -----------------------------------------------------------------------------
  * (*) Докажем (*), по индукции. Для n=1 это верно.
  * Тогда докажем, что при добавлении нижнего слоя в такое дерево количество внутренних вершин останется N - 1
  * где N новое число вершин на нижнем слое.
@@ -60,15 +63,6 @@ public class MinArray<E extends Comparable<E>> {
     }
 
     public static void main(String[] args) throws IOException {
-//        final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        final List<Long> list = new ArrayList<>();
-//        while(true) {
-//            final long x = -Long.parseLong(br.readLine());
-//            if (x == 0) {
-//                break;
-//            }
-//            list.add(x);
-//        }
         final List<Long> list = new ArrayList<>(List.of(1L, -3L, 5L, 9L, -2L, 0L));
         final MinArray<Long> minArray = new MinArray<>();
         System.out.println(minArray.findSecondMin(list));
